@@ -1,20 +1,13 @@
-# Navigating Objects
+# Navigating Complex Objects
 
-## Who is this for?
-
-This blog is meant for those brand new to coding and looking for ways to better grasp how to navigate complex object structure.
+When you're just starting off in coding, the concept of nested objects and accessing their properties can be difficult to grasp. Seeing a complicated object with multiple levels of depth can be intimidating at first, but working with these kinds of objects is an important skill to develop. When retrieving information from databases and APIs, the results are often packaged in a JSON (JavaScript Object Notation) object that has many levels of nested objects. Understanding how to navigate these objects will be crucial when working with this kind of data. This post is written for those who are new to working with objects and are looking for a breakdown on how to access a property multiple layers deep in nested objects.
 
 ## The Sample Data
 
-For the purpose of the examples here, we'll be looking at some real world (and beyond) data from NASA. They provide a number of free APIs that anyone can access to fetch data, so this will be a good example of what a complex object could look like. Due to the size of the sample data, I have just included a simplified schema of what the results look like. You can [click here](./sample-data.json) for a full sample of what the object could look like. The examples below will assume that a variable `fetchResults` has already been declared and set to these results.
-
-A couple notes:
-- There could be any number of key/value pairs under `near_earth_objects`, depending on how many days of data is requested through the API.
-- The array for each date could also contain any number of items.
-
-https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=DEMO_KEY
+For the purpose of the examples here, we'll be looking at some real world (and beyond) data provided by NASA. There are a number of free APIs from NASA that are available for anyone to access, so this will be a good example of what a complex object could look like in a real application. Our sample data will be fetched from the [Asteroids - NeoWs](https://api.nasa.gov/#asteroids-neows) API which provides information about near-Earth asteroids. Below I have included a simplified JSON schema of the dataset that shows the organizational structure without the actual data. If interested in seeing the actual JSON object, [here is the sample data](./sample-data.json) that I fetched with the API. The examples below will assume that a variable `fetchResults` has already been declared and that these results have already been assigned to it.
 
 ```json
+// Simplified JSON schema for fetchResults
 {
 	"links": {},
 	"element_count": 0,
@@ -37,41 +30,51 @@ https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&
 }
 ```
 
+A couple of things to note:
+- There could be any number of key/value pairs under `near_earth_objects`, depending on how many days of data is requested through the API.
+- The values associated with each date key are arrays, and these arrays can also contain any number of items.
+
 ## Accessing the Data
 
-Let's say we wanted to read the `is_potentially_hazardous_asteroid` property of the first element returned for the date `"2015-09-07"`. How do we go about doing it?
+Let's say we wanted to read the `is_potentially_hazardous_asteroid` property of the first element associated with the date `"2015-09-07"`. How do we go about doing it? Well we have to navigate down through each level in the object, working our way through the nested objects to find the specific property we're trying to reach. Here's how you can do it in JavaScript:
 
 ```jsx
- 
+// JavaScript
 //           ┌ access the 'near_earth_objects' object
-//           │                 ┌ access the desired date
+//           │                 ┌ access the array associated with the desired date
 //           │                 │             ┌ acccess the first object in the array
 //           │                 │             │   ┌ access the desired property
 fetchResults.near_earth_objects['2015-09-07'][0].is_potentially_hazardous_asteroid;
 // => false
 ```
 
-Let's break this down:
-1. `fetchResults` is the object returned from the API request as described above
-1. `.near_earth_objects` accesses the object that contains all the dates
+All right! So we got the property we were looking for, but how does this all work? Let's break this down:
+1. `fetchResults` is the object returned from the API request as described above.
+1. `.near_earth_objects` accesses the object that contains all the dates.
 1. `['2015-09-07']` accesses the array of objects for the desired date. Note that bracket notation is required here for two reasons:
-	- The key starts with a number
-	- The key contains a hyphen
-1. `[0]` accesses the first object of the array. Bracket notation is required here since
+	- The key starts with a number.
+	- The key contains a hyphen.
+1. `[0]` accesses the first object of the array. Bracket notation is required here since we are retrieving an element inside an array instead of a property in an object.
 1. `.is_potentially_hazardous_asteroid` finally gets us to the property we wanted to retrieve.
 
-The property we're trying to get to is four levels deep in the `fetchResults` object, so we have to use four [property accessors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors) in order to get to it. Accessing this property can also be done purely with bracket notation as shown below, however I prefer using dot notation where possible for its readability.
+The property we're trying to get to is four levels deep in the `fetchResults` object, so we have to use [property accessors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors) four times in order to get to it. We can't just type `fetchResults.is_potentially_hazardous_asteroid` to get this value. This is because the `fetchResults` object does not have the key `is_potentially_hazardous_asteroid` (and accessing this key will return `undefined`). An object is not immediately aware of the keys in any children objects. 
+
+Side note: Accessing this property can also be done purely with bracket notation as shown below, however I prefer using dot notation where possible for its readability.
 
 ```jsx
+// JavaScript
 fetchResults['near_earth_objects']['2015-09-07'][0]['is_potentially_hazardous_asteroid'];
+// => false
 ```
 
 ## Visualizing
 
-When you're first learning about objects, accessing these nested properties can seem abstract and might be hard to grasp. Another way to visualize this may be to imagine this as a folder tree on your computer. When you want to access a file, you sometimes have to navigate through multiple levels of directories first. For each 
+When you're first learning about objects, accessing these nested properties can seem abstract and might be a hard concept to grasp. Another way to visualize this may be to imagine this object as a folder tree on your computer. When you want to access a file, you sometimes have to navigate through multiple levels of directories first. For each level of arrays/objects nested within the main object, imagine another subfolder with its own contents. When you're in the top level directory, you can't access a file that is four folders down without navigating down to the file. 
 
-```bash
-.
+For the purpose of demonstration, I have created a mockup set of folders to mirror the structure of the `fetchResults` object. Below is the output of running the `tree` command in the terminal for these directories. 
+```Bash
+$ tree fetchResults
+fetchResults
 ├── element_count
 ├── links
 │   ├── next
@@ -79,42 +82,68 @@ When you're first learning about objects, accessing these nested properties can 
 │   └── self
 └── near_earth_objects
     ├── 2015-09-07
-    │   └── 0
-    │       ├── absolute_magnitude_h
-    │       ├── close_approach_data
-    │       │   ├── close_approach_date
-    │       │   ├── close_approach_date_full
-    │       │   ├── epoch_date_close_approach
-    │       │   ├── miss_distance
-    │       │   │   ├── astronomical
-    │       │   │   ├── kilometers
-    │       │   │   ├── lunar
-    │       │   │   └── miles
-    │       │   ├── orbiting_body
-    │       │   └── relative_velocity
-    │       │       ├── kilometers_per_hour
-    │       │       ├── kilometers_per_second
-    │       │       └── miles_per_hour
-    │       ├── estimated_diameter
-    │       │   ├── feet
-    │       │   │   ├── estimated_diameter_max
-    │       │   │   └── estimated_diameter_min
-    │       │   ├── kilometers
-    │       │   │   ├── estimated_diameter_max
-    │       │   │   └── estimated_diameter_min
-    │       │   ├── meters
-    │       │   │   ├── estimated_diameter_max
-    │       │   │   └── estimated_diameter_min
-    │       │   └── miles
-    │       │       ├── estimated_diameter_max
-    │       │       └── estimated_diameter_min
-    │       ├── id
-    │       ├── is_potentially_hazardous_asteroid
-    │       ├── is_sentry_object
-    │       ├── links
-    │       │   └── self
-    │       ├── name
-    │       ├── nasa_jpl_url
-    │       └── neo_reference_id
-    └── 2015-09-08
+    │   ├── 0
+    │   │   ├── absolute_magnitude_h
+    │   │   ├── close_approach_data
+    │   │   │   ├── close_approach_date
+    │   │   │   ├── close_approach_date_full
+    │   │   │   ├── epoch_date_close_approach
+    │   │   │   ├── miss_distance
+    │   │   │   │   ├── astronomical
+    │   │   │   │   ├── kilometers
+    │   │   │   │   ├── lunar
+    │   │   │   │   └── miles
+    │   │   │   ├── orbiting_body
+    │   │   │   └── relative_velocity
+    │   │   │       ├── kilometers_per_hour
+    │   │   │       ├── kilometers_per_second
+    │   │   │       └── miles_per_hour
+    │   │   ├── estimated_diameter
+    │   │   │   ├── feet
+    │   │   │   │   ├── estimated_diameter_max
+    │   │   │   │   └── estimated_diameter_min
+    │   │   │   ├── kilometers
+    │   │   │   │   ├── estimated_diameter_max
+    │   │   │   │   └── estimated_diameter_min
+    │   │   │   ├── meters
+    │   │   │   │   ├── estimated_diameter_max
+    │   │   │   │   └── estimated_diameter_min
+    │   │   │   └── miles
+    │   │   │       ├── estimated_diameter_max
+    │   │   │       └── estimated_diameter_min
+    │   │   ├── id
+    │   │   ├── is_potentially_hazardous_asteroid
+    │   │   ├── is_sentry_object
+    │   │   ├── links
+    │   │   │   └── self
+    │   │   ├── name
+    │   │   ├── nasa_jpl_url
+    │   │   └── neo_reference_id
+    │   └── ...
+    └── ...
 ```
+
+See how the structure here is nearly identical to the structure of the object? The process of retrieving a file in this folder structure is very similar to that of retrieving a property in the object. In JavaScript you use dot and/or bracket notation to access a property of an object. In Bash or your file explorer you use `/` to access a subfolder.
+
+```jsx
+// JavaScript
+// accessing a property in a series of nested objects
+fetchResults.near_earth_objects['2015-09-07'][0].is_potentially_hazardous_asteroid;
+```
+
+```bash
+# Bash
+# accessing a file in series of nested folders
+fetchResults/near_earth_objects/2015-09-07/0/is_potentially_hazardous_asteroid
+```
+
+For a more visual example see below for an example of navigating through the mockup folder set up to match the structure of `fetchResults`.
+
+![Screenshot of a directory](./images/directory-example.gif )
+
+## Iterating
+
+
+## Wrapping Up
+
+Hopefully this brief explanation provides some clarity into navigating through nested objects! It may be intimidating at first, but it's an important skill to develop. Objects with this level of complexity are common, so being familiar with how to access the different properties will be a big help as you continue to learn and
