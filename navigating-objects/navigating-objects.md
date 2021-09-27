@@ -1,3 +1,11 @@
+---
+title: Navigating Complex Objects
+published: false
+description: 
+tags: 
+//cover_image:
+---
+
 # Navigating Complex Objects
 
 When you're just starting off in coding, the concept of nested objects and accessing their properties can be difficult to grasp. Seeing a complicated object with multiple levels of depth can be intimidating at first, but working with these kinds of objects is an important skill to develop. When retrieving information from databases and APIs, the results are often packaged in a JSON (JavaScript Object Notation) object that has many levels of nested objects. Understanding how to navigate these objects will be crucial when working with this kind of data. This post is written for those who are new to working with objects and are looking for a breakdown on how to access a property multiple layers deep in nested objects.
@@ -72,7 +80,8 @@ fetchResults['near_earth_objects']['2015-09-07'][0]['is_potentially_hazardous_as
 When you're first learning about objects, accessing these nested properties can seem abstract and might be a hard concept to grasp. Another way to visualize this may be to imagine this object as a folder tree on your computer. When you want to access a file, you sometimes have to navigate through multiple levels of directories first. For each level of arrays/objects nested within the main object, imagine another subfolder with its own contents. When you're in the top level directory, you can't access a file that is four folders down without navigating down to the file. 
 
 For the purpose of demonstration, I have created a mockup set of folders to mirror the structure of the `fetchResults` object. Below is the output of running the `tree` command in the terminal for these directories. 
-```Bash
+```bash
+# bash
 $ tree fetchResults
 fetchResults
 ├── element_count
@@ -132,7 +141,7 @@ fetchResults.near_earth_objects['2015-09-07'][0].is_potentially_hazardous_astero
 ```
 
 ```bash
-# Bash
+# bash
 # accessing a file in series of nested folders
 fetchResults/near_earth_objects/2015-09-07/0/is_potentially_hazardous_asteroid
 ```
@@ -141,9 +150,6 @@ For a more visual example see below for an example of navigating through the moc
 
 ![Screenshot of a directory](./images/directory-example.gif )
 
-## Iterating
-
-
 ## Wrapping Up
 
-Hopefully this brief explanation provides some clarity into navigating through nested objects! It may be intimidating at first, but it's an important skill to develop. Objects with this level of complexity are common, so being familiar with how to access the different properties will be a big help as you continue to learn and
+Hopefully this brief explanation provides some clarity into navigating through nested objects! It may be intimidating at first, but it's an important skill to develop. Objects with this level of complexity are common and they can be structured in countless different ways. When you get data from an API, you may not have much (or any) control on how the data is formatted as you receive it. Being familiar with how to access the different properties will be a big help as you start to work with complex datasets.
