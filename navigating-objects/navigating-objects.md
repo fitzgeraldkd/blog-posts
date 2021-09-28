@@ -86,7 +86,7 @@ fetchResults['near_earth_objects']['2015-09-07'][0]['is_potentially_hazardous_as
 // => false
 ```
 
-## Visualizing
+## Visualizing the Data
 
 When you're first learning about objects, accessing these nested properties can seem abstract and might be a hard concept to grasp. Another way to visualize this may be to **imagine this object as a folder tree** on your computer. When you want to access a file, you sometimes have to navigate through *multiple levels of directories* first. For each level of arrays/objects nested within the main object, imagine another subfolder with its own contents. When you're in the top level directory, you don't have immediate access to files in any of the sub-directories. 
 
