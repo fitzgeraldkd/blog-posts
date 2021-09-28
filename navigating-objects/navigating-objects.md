@@ -42,7 +42,7 @@ For the purpose of the examples here, we'll be looking at some real world *(and 
 - There could be any number of key/value pairs under `near_earth_objects`, depending on how many days of data is requested through the API.
 - The values associated with each date key are arrays, and these arrays can also contain any number of items.
 
-If you are interested in seeing the actual JSON object, [here is the sample data](./sample-data.json) that I fetched with the API. The examples below will assume that a variable `fetchResults` has already been declared and that these results have already been assigned to it. There are two dates included in the results: `2015-09-07` (with 13 objects), and `2015-09-08` (with 11 objects).
+If you are interested in seeing the actual JSON object, [here is the sample data](./sample-data.json) that I fetched with the API. The examples below will assume that a variable `fetchResults` has already been declared and that these results have already been assigned to it. There are two dates included in the results: `"2015-09-07"` (with 13 objects), and `"2015-09-08"` (with 11 objects).
 
 
 ## Accessing the Data
@@ -76,7 +76,7 @@ fetchResults.is_potentially_hazardous_asteroid;
 // => undefined
 ```
 
-Well the `fetchResults` object only has three keys: `links`, `element_count`, and `near_earth_objects`. Accessing any other key will return `undefined`. The property we're trying to get to is four levels deep in the `fetchResults` object, so we have to use [property accessors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors) four times in order to get to it. An object does not have immediate access to any of the keys in any children objects. 
+Well the `fetchResults` object only has three keys: `links`, `element_count`, and `near_earth_objects`. Accessing any other key will return `undefined` since an object does not have immediate access to the keys in any children objects. The property we're trying to get to is four levels deep in the `fetchResults` object, so we have to use [**property accessors**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors) four times in order to get to it.
 
 *Side note*: Accessing this property can also be done purely with **bracket notation** as shown below, however I prefer using **dot notation** where possible for its readability.
 
@@ -159,7 +159,7 @@ fetchResults/near_earth_objects/2015-09-07/0/is_potentially_hazardous_asteroid
 
 For a more visual example see below for an example of navigating through the mockup folder set up to match the structure of `fetchResults`. When you're trying to access a property that is multiple levels deep in an object, imagine that you are navigating a folder structure to get to the information you're looking for.
 
-![Screenshot of a directory](./images/directory-example.gif )
+![Animation demonstrating navigating through nested directories](./images/directory-example.gif "Animation demonstrating navigating through nested directories")
 
 ## Wrapping Up
 
