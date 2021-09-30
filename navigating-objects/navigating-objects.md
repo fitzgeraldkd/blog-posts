@@ -1,6 +1,6 @@
 ---
 title: Navigating Complex Objects
-published: false
+published: true
 description: A summary of how to access properties within nested objects with a visual example.
 tags: beginners, javascript, json, objects
 ---
