@@ -1,14 +1,11 @@
 ---
 title: Navigating Complex Objects
 published: false
-description: 
-tags: 
-//cover_image:
+description: A summary of how to access properties within nested objects with a visual example.
+tags: beginners, javascript, json, objects
 ---
 
-# Navigating Complex Objects
-
-When you're just starting off in coding, the concept of nested objects and accessing their properties can be difficult to grasp. Seeing a complicated object with multiple levels of depth can be intimidating at first, but working with these kinds of objects is an important skill to develop. When retrieving information from databases and APIs, the results are often packaged in a **JSON *(JavaScript Object Notation)*** object that has many levels of nested objects. Understanding how to navigate these objects will be crucial when working with this kind of data. This post is written for those who are new to working with objects and are looking for a breakdown on how to access a property multiple layers deep in nested objects.
+When you're just starting off in coding, the concept of nested objects and accessing their properties can be difficult to grasp. Seeing a complicated object with multiple levels of depth can be intimidating at first, but working with these kinds of objects is an important skill to develop. When retrieving information from databases and APIs, the results are often packaged in a **JSON** ***(JavaScript Object Notation)*** object that has many levels of nested objects. Understanding how to navigate these objects will be crucial when working with this kind of data. This post is written for those who are new to working with objects and are looking for a breakdown on how to access a property multiple layers deep in nested objects.
 
 ## The Sample Data
 
@@ -42,7 +39,7 @@ For the purpose of the examples here, we'll be looking at some real world *(and 
 - There could be any number of key/value pairs under `near_earth_objects`, depending on how many days of data is requested through the API.
 - The values associated with each date key are arrays, and these arrays can also contain any number of items.
 
-If you are interested in seeing the actual JSON object, [here is the sample data](./sample-data.json) that I fetched with the API. The examples below will assume that a variable `fetchResults` has already been declared and that these results have already been assigned to it. There are two dates included in the results: `"2015-09-07"` (with 13 objects), and `"2015-09-08"` (with 11 objects).
+If you are interested in seeing the actual JSON object, [here is the sample data](https://github.com/fitzgeraldkd/blog-posts/blob/main/navigating-objects/sample-data.json) that I fetched with the API. The examples below will assume that a variable `fetchResults` has already been declared and that these results have already been assigned to it. There are two dates included in the results: `"2015-09-07"` (with 13 objects), and `"2015-09-08"` (with 11 objects).
 
 
 ## Accessing the Data
@@ -59,7 +56,7 @@ fetchResults.near_earth_objects['2015-09-07'][0].is_potentially_hazardous_astero
 // => false
 ```
 
-All right! So we got the property we were looking for and it returns a value of `false`, but how does this all work? Let's break this down:
+All right! So we got the property we were looking for and it returns the expected value of `false`, but how does this all work? Let's break this down:
 1. `fetchResults` is the object returned from the API request as described above.
 1. `.near_earth_objects` accesses the object that contains all the dates.
 1. `['2015-09-07']` accesses the array of objects for the desired date. Note that **bracket notation is required** here for two reasons:
@@ -159,7 +156,7 @@ fetchResults/near_earth_objects/2015-09-07/0/is_potentially_hazardous_asteroid
 
 For a more visual example see below for an example of navigating through the mockup folder set up to match the structure of `fetchResults`. When you're trying to access a property that is multiple levels deep in an object, imagine that you are navigating a folder structure to get to the information you're looking for.
 
-![Animation demonstrating navigating through nested directories](./images/directory-example.gif "Animation demonstrating navigating through nested directories")
+![Animation demonstrating navigating through nested directories](https://i.imgur.com/quJB88C.gif "Animation demonstrating navigating through nested directories")
 
 ## Wrapping Up
 
