@@ -1,5 +1,5 @@
 ---
-title: ['this'] !== ['this']
+title: Object References (Why ['this']!==['this'])
 published: false
 description: Exploring how JavaScript references arrays/objects when assigned to variables.
 tags: javascript, webdev, beginners, programming
