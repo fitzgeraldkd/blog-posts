@@ -127,9 +127,9 @@ console.log(arr4);
 // => ['that']
 ```
 
-In the example both `arr3` and `arr4` are pointing to the same array in memory. When an element in `arr4` is changed, it changes the array in the memory. Since both variables point to the same array in memory, this change can be seen by logging `arr3` even though `arr3` was not directly modified. This example directly modified an element in the array, but it's important to note that **many array and object methods are destructive and modify the original array**. I recommend reviewing the documentation for [arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) and [objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) if you need to know which methods are destructive.
+In the example both `arr3` and `arr4` are pointing to the same array in memory. When an element in `arr4` is changed, it changes the array in the memory. Since both variables point to the same array in memory, this change can be seen by logging `arr3` even though `arr3` was not directly modified. This example directly modified an element in the array, but it's important to note that **many array and object methods are destructive and modify the original object**. I recommend reviewing the documentation for [arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) and [objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) if you need to know which methods are destructive.
 
-If you need to copy an array or object and make modifications without affecting the original, then you need to make a copy. If there's only a single level of data, a shallow copy will suffice and is easy to accomplish. With ES6, a shallow copy can be quickly created with the spread operator (`...`):
+If you need to assign an array or object to a new variable and make modifications without affecting the original, then you need to make a copy. If there's only a single level of data, a shallow copy will suffice and is easy to accomplish. With ES6, a shallow copy can be quickly created with the spread operator (`...`):
 
 ```jsx
 const arr5 = [1, 2, 3];
