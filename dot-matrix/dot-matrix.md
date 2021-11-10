@@ -1,6 +1,6 @@
 ---
 title: Building a Dot Matrix Animator
-published: false
+published: true
 description: Writing a program that generates dot matrix animations in Ruby.
 tags: showdev, ruby, programming
 cover_image: https://i.imgur.com/cIJCDcv.png
@@ -103,8 +103,7 @@ Obviously a lot of detail was lost since the original pictures were almost 2000 
 Here's a few things I'd like to add in the future:
 
 - Have the foreground/background colors be dynamically set by the dominant colors in the source image
-- Provide the option to transition colors between each keyframe
 - Provide the option to generate an SVG instead of (or in addition to) a GIF
-- Allow an animated GIF to be an input image (it currently reads the GIF as a single frame)
+- Allow an animated GIF to be an input image and have each frame be processed (it currently reads only a single frame from animated GIFs)
 
 I hope you found this project as interesting as I did! I had a lot of fun making it and feel a lot more comfortable with Ruby's syntax after going through it. *Thanks for reading!*
