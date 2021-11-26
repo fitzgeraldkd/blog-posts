@@ -1,6 +1,6 @@
 ---
 title: Making the Most of DSA Practice
-published: false
+published: true
 description: How I reframed my approach for data structures and algorithms practice to make the most of it.
 cover_image: https://i.imgur.com/EYMds87.png
 tags: algorithms, testing, programming, javascript

@@ -1,6 +1,6 @@
 # Example Class & Tests
 
-The files here show the example class and tests from the [blog post]() I wrote on getting the most out of data structures and algorithm practice.
+The files here show the example class and tests from the [blog post](https://dev.to/fitzgeraldkd/making-the-most-of-dsa-practice-5h78) I wrote on getting the most out of data structures and algorithm practice.
 
 ## Setup
 
