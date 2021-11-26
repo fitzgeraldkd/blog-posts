@@ -1,16 +1,22 @@
-# Making the Most of DSA Practice
+---
+title: Making the Most of DSA Practice
+published: false
+description: How I reframed my approach for data structures and algorithms practice to make the most of it.
+cover_image: https://i.imgur.com/EYMds87.png
+tags: algorithms, testing, programming, javascript
+---
 
-The words "data structures and algorithms" can bring up certain feelings in many engineers. Practicing these skills can be especially daunting for newer developers looking for their first role. While I am also facing this same intimidation, I've been reframing it to make it a more enjoyable experience.
+The words "data structures and algorithms" can bring up certain feelings in many engineers. Practicing these skills can be especially daunting for newer developers preparing for technical interviews. While I am also facing this same intimidation, I've been reframing it to make it a more enjoyable experience.
 
 So instead of asking:
 
-> How can I get through this practice as quickly as possible?
+> How can I get get through this practice?
 
 I've been asking myself:
 
 > **How can I make the most of this practice?**
 
-After changing the way I view this practice, I've noticed some great benefits. Not only am I more excited to work on these tasks, but I'm also using this as an opportunity to build up other skills that will help me down the line. I'll be graduating from Flatiron School's software engineering course in a few weeks, so I'm doing what I can to set myself up for success as I prepare for my first career in this field!
+After changing the way I view this practice and setting up a structure for tackling these problems, I've noticed some great benefits! Not only am I more excited to work on these tasks, but I'm also using this as an opportunity to build up other skills that will help me down the line even after the technical interviews. This should not be a chore, but rather an opportunity to become a better software engineer.
 
 *Outline:*
 - [My Goals](#my-goals)
@@ -20,7 +26,7 @@ After changing the way I view this practice, I've noticed some great benefits. N
     - [Refactoring](#refactoring)
 - [My Takeaways](#my-takeaways)
     - [Time and Space Complexity](#time-and-space-complexity)
-    - [Test-Driven Development](#test-driven-development)
+    - [Test-Driven Development](#testdriven-development)
     - [General Language Familiarity](#general-language-familiarity)
 - [Conclusion](#conclusion)
 - [Resources](#resources)
@@ -29,11 +35,11 @@ After changing the way I view this practice, I've noticed some great benefits. N
 
 In order to get the most out of my practice, I needed to decide what I wanted to do. 
 
-- First I decided that JavaScript would be my language of choice for this practice as it's the language I think I'll be most successful with. Down the line I could always translate to another language if I want to practice get familiar with another language's syntax.
+- First I decided that JavaScript would be my language of choice for this practice as it's the language I think I'll be most successful with.
 - Next I decided that I want to **create my own classes** for things like stacks, trees, linked lists, etc. (data structures not available in vanilla JS).
-- Last, and possibly the most important, I decided to write my own tests using a **testing framework**. 
+- Last I decided to write my own tests using a **testing framework**. 
 
-When practicing with a service like LeetCode or HackerRank, the classes and tests are usually given to you. While it would be quicker to rely on those, writing my own classes and tests gives me a better understanding of how data structures work. 
+When practicing with a service like LeetCode or HackerRank, the classes and tests are usually given to you (classes are typically instantiated already for the inputs to the algorithm, and tests can be run at the click of a button with predefined test cases). While it would be quicker to rely on those, writing my own classes and tests gives me a better understanding of how data structures work and how to write effective tests.
 
 ## My Process
 
@@ -44,20 +50,21 @@ With decisions made, I came up with a process on how I tackle an algorithm probl
     1. Write the code for the class and its methods, testing along the way
     1. Refactor until satisfied with the code
     1. Think of new edge cases, write additional tests as needed, and repeat!
-<!-- -->
+
+
 - *For the algorithm:*
     1. Write tests for the algorithm
     1. Write code to solve the algorithm, testing along the way
     1. Refactor until satisfied with the code
     1. Think of new edge cases, write additional tests as needed, and repeat!
 
-Notice how both lists are nearly identical? That wasn't an accident, and we'll look a little bit into where the steps came from!
+Notice how both lists are nearly identical? That wasn't an accident, and we'll look a little bit into how this ties into **test-driven development**!
 
 ### Writing Tests
 
-First you need to determine what needs to be tested. If you're building a class, which methods does it need to have? If you're writing an algorithm, what are some different test cases that you need to anticipate? If you're working on a task assigned to you, read the deliverables **carefully**. Make sure you have a solid understanding of what is expected before you write anything.
+First you need to determine what needs to be tested. If you're building a class, what methods are needed? If you're writing an algorithm, what are some different test cases that you need to anticipate? If you're working on a task assigned to you, read the deliverables **carefully**. Make sure you have a solid understanding of what is expected before you write anything.
 
-Next, what are the expected inputs and outputs? For example, say we are building a Stack class. When we run the `pop` method there are two things that should happen:
+Next, what are the expected inputs and outputs? For example, say we are building a Stack class (a [last-in-first-out data structure](https://www.tutorialspoint.com/data_structures_algorithms/stack_algorithm.htm)). When we run the `pop` method there are two separate actions that should happen:
 
 1. The top element should be removed from the stack
 1. The value of the top element should be returned
@@ -90,9 +97,11 @@ describe('Can pop from Stack', () => {
 
 One of my favorite things about using a test framework is that tests can be automatically re-run every time the files are saved. As I'm coding, I keep an eye on the terminal in case any changes I made have unexpected results (good or bad).
 
+The full test code I wrote can be viewed in [this GitHub repository](https://github.com/fitzgeraldkd/blog-posts/blob/main/making-the-most-of-dsa-practice/examples/Stack.test.js).
+
 ### Writing Code
 
-The time it takes to write tests can give you some time to think about the task at hand and ponder possible solutions. By the time I finish writing tests I typically have an idea of how to start my code, but if not I take more time to think on it. For complex problems, either drawing diagrams or sketching out notes can help a lot too! If the tests can be tackled piecemeal, focus on one task at a time to get closer to your end goal.
+The time it takes to write tests can give you some time to think about the task at hand and ponder possible solutions. By the time I finish writing tests I typically have an idea of how to start my code, but if not I take more time to think on it. For complex problems, it may help to draw some diagrams, sketching out notes, or maybe implement [rubber duck debugging](https://rubberduckdebugging.com/)! *Pair programming with a human is an acceptable substitute if a duck is not available.* If the tests can be tackled piecemeal, focus on one task at a time to get closer to your end goal.
 
 Let's say I'm working on the `pop` method of the stack class that we wrote tests for above. This method has two separate tests it needs to pass. For the first test we need to remove the top item of the stack, so let's start there: 
 
@@ -109,7 +118,7 @@ class Stack {
 ```
 <figcaption>The pop method will now pass the first test</figcaption>
 
-The code above replaces the top item with the next item in the stack. That's all that's needed to remove the top item so we've passed the first test! To pass the next test we need to return the value of the top item, so we just need to add a couple more lines to the method we just started:
+The code above replaces the top item with the next item in the stack. That's all that's needed to remove the top item so we've passed the first test! We're still failing the second test though. To pass the next test we need to return the value of the top item, so we just need to add a couple more lines to the method we just started:
 
 ```jsx
 class Stack {
@@ -126,27 +135,30 @@ class Stack {
 ```
 <figcaption>The pop method will now pass both tests</figcaption>
 
-After I have working code, I will take a closer look the time and space complexity. While I try to be mindful of this throughout the process, sometimes it's more important to get the code functional first before optimizing it. That's where refactoring comes in!
+After I have working code, I will take a closer look at the time and space complexity. While I try to be mindful of this throughout the process, sometimes it's more important to get the code functional first before optimizing it. That's where refactoring comes in!
+
+The full code for this class I wrote can be viewed in [this GitHub repository](https://github.com/fitzgeraldkd/blog-posts/blob/main/making-the-most-of-dsa-practice/examples/Stack.js).
 
 ### Refactoring
 
 After I get my code to work, I take a second look at my process and look for improvements. Are there variables I've assigned that are unnecessary? Is my time complexity reasonable for the task? Are there any **edge cases** that I haven't considered? Refactoring gets easier with practice, and sometimes the improvements may not be obvious right away. If you're not on a time crunch, this may be a good opportunity to step away from the code for a minute!
 
-One important thing to keep in mind when optimizing your code is that it is very rare for there to be a single optimal case. For example, below is a table summarizing a couple ways to optimize a simple algorithm that checks if duplicate characters exist in a string:
+One important thing to keep in mind when optimizing your code is that it is very rare for there to be a single optimal case. For example, below is a table summarizing a couple ways to optimize a simple algorithm that checks if all the items in an **unsorted array** are unique:
 
 |             | Time Complexity | Space Complexity |
 |:-----------:|:---------------:|:----------------:|
 | Optimizing Time | `O(n)` | `O(n)` |
-| Optimizing Space | `O(n^2)`* | `O(1)` |
-<figcaption>* Could possibly be reduced to O(n log n) if the string could be sorted in place without splitting into an array</figcaption>
+| Optimizing Space | `O(n log n)` | `O(1)` |
 
-There are often trade-offs between optimizing time or space complexity. The goal should be to keep both at a minimum wherever possible, but sometimes decisions need to be made on which is the priority. When I'm practicing, I will sometimes solve an algorithm multiple times trying to optimize different aspects. Luckily the same tests can be used for both solutions!
+For this algorithm, you could decide to *optimize time* by iterating through the array just one time and creating a hash to ensure no value exists more than once. You could also *optimize space* by sorting the array in-place first (perhaps with [heapsort](https://en.wikipedia.org/wiki/Heapsort)), then iterating through the array once and seeing if any two consecutive items are identical.
+
+There are often **trade-offs** between optimizing time or space complexity. The goal should be to keep both at a minimum wherever possible, but sometimes decisions need to be made on which is the priority. When I'm practicing, I will sometimes solve an algorithm multiple times trying to optimize different aspects. Luckily the same tests can be used for both solutions!
 
 ## My Takeaways
 
 ### Time and Space Complexity
 
-This is probably the most obvious skill that is developed from these exercises. Writing code that works is easy; writing code that works *efficiently* is much more challenging. Starting with a brute-force algorithm will get the job done, but **developing that awareness for when things feel inefficient is crucial**. With more practice I find myself being able to recognize what the time and space complexities of algorithms are much easier, and also possible routes to improve them.
+This is probably the most obvious skill that is developed from these exercises. Writing code that works is (*relatively*) easy; writing code that works *efficiently* is much more challenging. Starting with a brute-force algorithm will get the job done, but **developing that awareness for when code feels inefficient is crucial**. I find it easier to determine the time and space complexities of algorithms now that I've been practicing more, as well as possible routes to improve them.
 
 ### Test-Driven Development
 
@@ -160,6 +172,8 @@ Refactoring isn't necessarily the end of the process. Sometimes after the code i
 
 ![Red, Green, Refactor process](https://i.imgur.com/5BxpMxZ.jpg)
 
+For example, there's an important edge case to consider with the `pop` method we walked through: what happens when you run the `pop` method on an **empty stack**? This would be a good opportunity to think about what you want to happen in this case. Should an error be raised, or should the method just return `null`? Determine what the method should do, and start the cycle again by writing more tests!
+
 ### General Language Familiarity
 
 Of course writing code of any kind will help you get more familiar with the language! With the process I've set for myself, I find myself noticably improving in these areas (among others):
@@ -170,7 +184,9 @@ Of course writing code of any kind will help you get more familiar with the lang
 
 ## Conclusion
 
+Preparing for technical interviews is a challenge for most (if not all) newer software engineers, myself included. As I continue to practice I will still come across questions that *throw me for a loop*. However with a structure set up for myself to approach these problems I feel much more empowered to face them knowing that I'm developing skills that will help me even beyond the technical interview.
 
+If you want to see the tests I wrote in action, I have the files and instructions available [here](https://github.com/fitzgeraldkd/blog-posts/tree/main/making-the-most-of-dsa-practice/examples) on how to run them.
 
 What else do you do to make the most out of this practice? 
 
