@@ -36,12 +36,9 @@ const CalendarContainer = styled.div`
 
   /* ~~~ label styles ~~~ */
   .react-calendar__month-view__weekdays {
-    /* display: grid; */
-    /* grid-template-columns: 14.2% 14.2% 14.2% 14.2% 14.2% 14.2% 14.2%;  */
     text-align: center;
   }
 
-  // step 3
   /* ~~~ button styles ~~~ */
   button {
     margin: 3px;
@@ -60,7 +57,6 @@ const CalendarContainer = styled.div`
     }
   }
 
-  // step 4
   /* ~~~ day grid styles ~~~ */
   .react-calendar__month-view__days {
     display: grid !important;
@@ -75,7 +71,6 @@ const CalendarContainer = styled.div`
     }
   }
 
-  // step 5
   /* ~~~ neighboring month & weekend styles ~~~ */
   .react-calendar__month-view__days__day--neighboringMonth {
     opacity: 0.7;
@@ -84,7 +79,6 @@ const CalendarContainer = styled.div`
     color: #dfdfdf;
   }
 
-  // step 6
   /* ~~~ other view styles ~~~ */
   .react-calendar__year-view__months, .react-calendar__decade-view__years, .react-calendar__century-view__decades {
     display: grid !important;
@@ -98,6 +92,4 @@ const CalendarContainer = styled.div`
       max-width: initial !important;
     }
   }
-
-
 `;
