@@ -1,6 +1,6 @@
 ---
 title: React-Calendar with Custom Styles
-published: false
+published: true
 description: React-Calendar is a useful component to add an interactable calendar to your React project. While a default stylesheet can be applied, this blog post will cover how to provide custom styling with Styled Components.
 tags: react, javascript, css, webdev
 cover_image: https://i.imgur.com/doR3faR.png
