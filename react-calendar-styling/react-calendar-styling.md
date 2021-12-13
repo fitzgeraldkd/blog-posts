@@ -1,12 +1,10 @@
 ---
-title: React-Calendar With Custom Styles
+title: React-Calendar with Custom Styles
 published: false
 description: React-Calendar is a useful component to add an interactable calendar to your React project. While a default stylesheet can be applied, this blog post will cover how to provide custom styling with Styled Components.
 tags: react, javascript, css, webdev
-//cover_image: https://direct_url_to_image.jpg
+cover_image: https://i.imgur.com/doR3faR.png
 ---
-
-# React-Calendar With Custom Styles
 
 I was looking for a calendar to use in a React project and found the [React-Calendar](https://www.npmjs.com/package/react-calendar) component. It has all the functionality that I was looking for and saves me a lot of time from building it out on my own. It can be controlled with state so that the selected date(s) can affect what displays in the app. I wanted to customize its styling to fit my project, so here's what I came up with!
 
@@ -281,9 +279,9 @@ And there we go! A React-Calendar component styled with the help of styled-compo
 
 It's really easy to change the styling of the React-Calendar component, you just need to know which class selectors to use. The styles I've put together here are just one way to go about it. Once all the selectors and styles are in place, it's much easier to play around and determine what suits your project.
 
-If you want to interact with the app built out for this blog post, it is available on [GitHub](https://github.com/fitzgeraldkd/blog-posts/tree/main/react-calendar-styling/react-calendar-demo).
+If you want to interact with the app built out for this blog post, it is available on [GitHub](https://github.com/fitzgeraldkd/blog-posts/tree/main/react-calendar-styling/react-calendar-demo). The file where all the styles are applied can be found [here](https://github.com/fitzgeraldkd/blog-posts/blob/main/react-calendar-styling/react-calendar-demo/src/App.js).
 
-I also have very similar styles applied to this component in an app I am currently building out, you can [check that out here](https://applitracker.netlify.app/) as well if you're interested. The app is still being developed, but here's a screenshot of what it currently looks like:
+I also have very similar styles applied to this component in an app I am currently building out, you can [check that out here](https://applitracker.netlify.app/) as well if you're interested. The app is still being developed and you'll need to sign up to see the calendar, so here's a screenshot of what it currently looks like:
 
 ![AppliTracker demo with calendar](https://i.imgur.com/H175PmF.png)
 
