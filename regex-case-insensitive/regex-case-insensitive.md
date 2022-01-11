@@ -1,9 +1,9 @@
 ---
-title: Why Not /[A-z]/ For Case-Insensitive Regex?
-published: false
+title: Does /[A-z]/ Work For Case-Insensitive Regex?
+published: true
 description: The regular expression /[A-z]/ initially looks like an option to quickly select all letters regardless of case, but it comes with a few caveats.
 tags: regex, beginners
-//cover_image: https://i.imgur.com/GMY3ZMx.png
+cover_image: https://i.imgur.com/GMY3ZMx.png
 ---
 
 A while back I remember coming across one example online for finding a case-insensitive letter that looked like this:
