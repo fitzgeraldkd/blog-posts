@@ -1,9 +1,9 @@
 ---
 title: Why Not /[A-z]/ For Case-Insensitive Regex?
 published: false
-description: 
-tags: 
-//cover_image: https://direct_url_to_image.jpg
+description: The regular expression /[A-z]/ initially looks like an option to quickly select all letters regardless of case, but it comes with a few caveats.
+tags: regex, beginners
+//cover_image: https://i.imgur.com/GMY3ZMx.png
 ---
 
 A while back I remember coming across one example online for finding a case-insensitive letter that looked like this:
@@ -20,7 +20,7 @@ I thought this would be a great and concise way to do the job, but I came to rea
 
 While I initially thought this would be fine, I was getting some unexpected results when I used it. Here's a screenshot from [Rubular](https://rubular.com/) showing what I started seeing:
 
-![Regex example](./images/regex-example.png)
+![Regex example](https://i.imgur.com/q9FosL5.png)
 
 The expression is successfully finding lowercase and uppercase letters, but it's also grabbing a few extra symbols. Where is this coming from?
 
